@@ -15,6 +15,7 @@
     <final.name>todos</final.name>
     <slf4j.api.version>1.7.30</slf4j.api.version>
     <slf4j.jdk.version>1.7.30</slf4j.jdk.version>
+    <version.lombok>1.18.28</version.lombok>
   </properties>
   <dependencies>
     <dependency>
@@ -28,6 +29,12 @@
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>5.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.lombok}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
