@@ -186,7 +186,7 @@
                                 </goals>
                             </execution>
                             <execution>
-                                <id>start-integration-test</id>
+                                <id>stop-integration-test</id>
                                 <phase>post-integration-test</phase>
                                 <goals>
                                     <goal>test-stop</goal>
