@@ -16,7 +16,7 @@ public class RestAssuredConfigurationExtension implements BeforeAllCallback, Aft
     private String rootPath;
 
     @Override
-    public void beforeAll(ExtensionContext extensionContext) throws Exception {
+    public void beforeAll(ExtensionContext extensionContext) {
         // backup
         this.baseURI = RestAssured.baseURI;
         this.port = RestAssured.port;
@@ -36,7 +36,7 @@ public class RestAssuredConfigurationExtension implements BeforeAllCallback, Aft
     }
 
     @Override
-    public void afterAll(ExtensionContext extensionContext) throws Exception {
+    public void afterAll(ExtensionContext extensionContext) {
         // restore
         RestAssured.baseURI = this.baseURI;
         RestAssured.port = this.port;
