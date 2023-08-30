@@ -6,29 +6,19 @@
 </head>
 <body>
 
-<h2>MicroProfile</h2>
+<h1>Todos Application</h1>
 
-<a href="data/hello" target="_blank" >Hello JAX-RS endpoint</a> <br/>
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>Open API</h3>
-<a href="openapi" target="_blank" >Open API Documentation</a> <br/>
-
-
-
-
-
-
+<h2>Finden</h2>
+<ul>
+    <li><a href="read-todos">Alle Todos</a></li>
+    <li><a href="read-todos?search=servlet">Alle Todos mit "Servlets" im Namen</a></li>
+    <li>Suchen nach:
+        <form action="read-todos" method="get">
+            <input name="search">
+            <input type="submit">
+        </form>
+    </li>
+</ul>
 
 
 </body>
