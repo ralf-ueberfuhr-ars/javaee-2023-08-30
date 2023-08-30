@@ -1,19 +1,52 @@
 package de.samples.javaee.todos;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.stream.Stream;
 
-public class ReadAllTodosServlet {
+@WebServlet("read-todos")
+public class ReadAllTodosServlet extends HttpServlet {
 
-    // private Collection<Todo> todos = Arrays.asList(
-    //  new Todo("Servlets lernen")
-    // );
+    private final Collection<Todo> todos = Arrays.asList(
+            new Todo("Servlets lernen"),
+            new Todo(
+                    "Jakarta EE lernen",
+                    "Alles zusammen braucht Zeit.",
+                    LocalDate.now().plusWeeks(10)
+            )
+    );
 
-    // GET /read-todos
-    // -> Liste von Todos (Titel, Beschreibung, Frist)
-
-    // Zusatz:
-    // GET /read-todos?search=lernen
-    // -> Liste von Todos mit "lernen" im Titel
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        var search = req.getParameter("search");
+        Stream<Todo> todos = this.todos.stream();
+        if(null != search) {
+            todos = todos.filter(t -> t.getTitle().toLowerCase().contains(search.toLowerCase()));
+        }
+        try(PrintWriter out = resp.getWriter()) {
+            out.println("Todos:");
+            out.println("======");
+            out.println();
+            todos.forEach(t -> {
+                out.print(" - " + t.getTitle());
+                if(null != t.getDueDate()) {
+                    out.print(" (");
+                    out.print(t.getDueDate().format(DateTimeFormatter.ISO_DATE));
+                    out.print(")");
+                }
+                out.println();
+            });
+        }
+    }
 
 }
