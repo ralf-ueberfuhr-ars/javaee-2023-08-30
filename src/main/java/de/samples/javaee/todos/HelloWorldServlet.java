@@ -18,7 +18,14 @@ public class HelloWorldServlet extends HttpServlet {
         // REQ auslesen (Parameter, Header, ...)
         String name = req.getParameter("name");
         // auf NULL prüfen
-
+        if(null == name || name.isEmpty()) {
+            // resp.sendError(400);
+            // return;
+            name = "World";
+        }
+        // Konvertieren / Validieren
+        // Aktion
+        // Antwortgenerierung
         resp.setContentType("text/html");
         try(PrintWriter out = resp.getWriter()) {
             out.println("<h1>Hello</h1><p>Hello " + name + "</p>");
