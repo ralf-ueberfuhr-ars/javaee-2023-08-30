@@ -33,6 +33,7 @@ public class ReadAllTodosServlet extends HttpServlet {
         if(null != search) {
             todos = todos.filter(t -> t.getTitle().toLowerCase().contains(search.toLowerCase()));
         }
+        resp.setContentType("text/plain");
         try(PrintWriter out = resp.getWriter()) {
             out.println("Todos:");
             out.println("======");
