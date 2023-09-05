@@ -24,7 +24,8 @@ public class ReadAllTodosServlet extends HttpServlet {
                     "Jakarta EE lernen",
                     "Alles zusammen braucht Zeit.",
                     LocalDate.now().plusWeeks(10)
-            )
+            ),
+            new Todo("Prüfen, ob a2<a3>a1")
     );
 
     @Override

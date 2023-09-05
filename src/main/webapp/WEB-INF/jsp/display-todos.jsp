@@ -25,7 +25,7 @@ Gefundene Einträge: ${fn:length(todos)}
     <c:forEach items="${todos}" var="t">
         <tr>
             <td>
-                    ${t.title}
+                <c:out value="${t.title}"/>
             </td>
             <td>
                     <fmt:formatDate value="${t.dueDateAsDate}" pattern="dd.MM.yyyy"/>
