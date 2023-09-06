@@ -7,18 +7,20 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Todo {
 
+    private UUID uuid;
     private String title;
     private String description;
     private LocalDate dueDate;
 
-    public Todo(String title) {
-        this(title, null, null);
+    public Todo(UUID uuid, String title) {
+        this(uuid, title, null, null);
     }
 
     public Date getDueDateAsDate() {
