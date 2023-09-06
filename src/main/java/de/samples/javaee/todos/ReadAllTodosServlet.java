@@ -12,22 +12,30 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @WebServlet("read-todos")
 public class ReadAllTodosServlet extends HttpServlet {
 
-    private final Collection<Todo> todos = Arrays.asList(
-            new Todo("Servlets lernen"),
+    private final Collection<Todo> todos = new LinkedList<>(Arrays.asList(
             new Todo(
+                    UUID.randomUUID(),
+                    "Servlets lernen"
+            ),
+            new Todo(
+                    UUID.randomUUID(),
                     "Jakarta EE lernen",
                     "Alles zusammen braucht Zeit.",
                     LocalDate.now().plusWeeks(10)
             ),
-            new Todo("Prüfen, ob a2<a3>a1")
-    );
-
+            new Todo(
+                    UUID.randomUUID(),
+                    "Prüfen, ob a2<a3>a1"
+            )
+    ));
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var search = req.getParameter("search");
