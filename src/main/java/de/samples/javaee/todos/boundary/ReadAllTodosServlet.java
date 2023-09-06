@@ -1,5 +1,6 @@
-package de.samples.javaee.todos;
+package de.samples.javaee.todos.boundary;
 
+import de.samples.javaee.todos.domain.Todo;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,6 +20,9 @@ import java.util.stream.Stream;
 
 @WebServlet("read-todos")
 public class ReadAllTodosServlet extends HttpServlet {
+
+//    @Inject
+//    private Validator validator;
 
     private final Collection<Todo> todos = new LinkedList<>(Arrays.asList(
             new Todo(
