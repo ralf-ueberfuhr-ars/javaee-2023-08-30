@@ -1,6 +1,7 @@
 package de.samples.javaee.todos.rest;
 
 import de.samples.javaee.todos.Todo;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -80,7 +81,7 @@ public class TodosResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(Todo input, @Context UriInfo info) {
+    public Response create(@Valid Todo input, @Context UriInfo info) {
         input.setUuid(UUID.randomUUID());
         this.todos.add(input);
         var location = info.getAbsolutePathBuilder()
