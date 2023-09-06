@@ -1,5 +1,7 @@
 package de.samples.javaee.todos;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,8 @@ import java.util.UUID;
 public class Todo {
 
     private UUID uuid;
+    @NotNull
+    @Size(min = 3)
     private String title;
     private String description;
     private LocalDate dueDate;
