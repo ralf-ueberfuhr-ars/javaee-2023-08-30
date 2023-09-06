@@ -1,4 +1,4 @@
-package de.samples.javaee.todos;
+package de.samples.javaee.todos.boundary;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

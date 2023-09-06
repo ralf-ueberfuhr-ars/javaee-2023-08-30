@@ -1,4 +1,4 @@
-package de.samples.javaee.todos;
+package de.samples.javaee.todos.domain;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,6 +27,7 @@ public class Todo {
         this(uuid, title, null, null);
     }
 
+    // TODO: JSP
     public Date getDueDateAsDate() {
         return null != dueDate
                 ? Date.from(dueDate.atStartOfDay(ZoneId.systemDefault()).toInstant())
